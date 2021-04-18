@@ -1,0 +1,17 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+.nav {
+    @apply text-white block p-2 bg-bluelogo hover:bg-white hover:text-black;
+}
+
+.input {
+    @apply h-8 border border-black rounded mx-2 px-2 focus:outline-none;
+}
+
+.button {
+    @apply w-24 bg-bluelogo text-white hover:bg-classicblue;
+}

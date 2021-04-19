@@ -3,8 +3,8 @@
         <div class="grid grid-cols-4 gap-2 mt-6">
             <span> {{ enterSong }}  </span> 
             <span> {{ enterArtist }}  </span> 
-            <button class="w-24 bg-bluelogo text-white hover:bg-black" @click="editButton">Edit</button>
-             <button class="w-24 bg-classicblue text-white hover:bg-black" @click="deleteButton">Delete</button>
+            <button class="h-8 w-24 bg-bluelogo text-white hover:bg-black" @click="editButton">Edit</button>
+             <button class="h-8 w-24 bg-classicblue text-white hover:bg-black" @click="deleteButton">Delete</button>
         </div>
     </div>
 </template>

@@ -10,8 +10,8 @@
           <SongList :enterSong="s.song"  :enterArtist="s.artist" @click="selectedSong(s)" @edit-button="openContent" @delete-button="deleteSong(s.id)">   </SongList> 
       </div>
       <div>
-         <Content v-if="addClick" @close="changeAddSong"  @submit-song="addNewSong"></Content>
-         <Content v-if="editClick" @close="changeEditSong"  :name="currentSong.song" :artist="currentSong.artist" @submit-song="editSong"></Content>
+         <!-- <Content v-if="addClick" @close="changeAddSong"  @submit-song="addNewSong"></Content> -->
+         <Content v-if="editClick" @close="changeEditSong"  :song="currentSong.song" :artist="currentSong.artist" @submit-song="editSong"></Content>
       </div>
       
  </div>
@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     changeAddSong(obj) {
-      this.$emit("close-content", obj);
+      this.$emit("close", obj);
     },
     changeEditSong(obj) {
       this.editClick = !obj;
@@ -52,6 +52,20 @@ export default {
     },
     selectedSong(songLists) {
       this.currentSong = songLists;
+    },
+    async addNewSong(addNewSong) {
+      const res = await fetch(this.url, {
+				method: "POST",
+				headers: {
+					"Content-type": "application/json",
+				},
+				body: JSON.stringify({
+					song: addNewSong.song,
+					artist: addNewSong.artist,
+				}),
+			});
+      const data = await res.json();
+			this.song = [...this.song, data];
     },
     async deleteSong(id) {
       const res = await fetch(`${this.url}/${id}`, {

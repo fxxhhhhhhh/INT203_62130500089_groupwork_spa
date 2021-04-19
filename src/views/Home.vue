@@ -1,9 +1,9 @@
 <template>
   <div class="justify-items-center">
-  <base-nav-bar></base-nav-bar>
-  <p class="text-4xl font-bold mt-10">Please enter your fav song!</p>
-  <Content @submit-song="addNewSong"></Content>
-</div>
+      <base-nav-bar></base-nav-bar>
+      <p class="text-4xl font-bold mt-10">Please enter your fav song!</p>
+      <Content @close="cancelSubmitSong" @submit-song="addNewSong" ></Content>
+  </div>
 </template>
 
 <script>
@@ -19,10 +19,14 @@ export default {
   data(){
     return{
       url:"http://localhost:3000/songLists",
-      songLists:[]
+      songLists:[],
+      editClick: false
     };
   },
   methods: {
+    cancelSubmitSong(obj){
+      this.$emit("close", obj);
+    },
     async fetchSong() {
 			const res = await fetch(this.url);
 			const data = await res.json();

@@ -9,7 +9,7 @@
 }
 
 .input {
-    @apply h-8 border border-black rounded mx-2 px-2 focus:outline-none;
+    @apply h-8 border border-black rounded px-2 focus:outline-none;
 }
 
 .button {

@@ -5,12 +5,14 @@
 				<p v-if="errors" class="text-red-600 text-left ml-2">*This fill can't be blank!</p>
 				<p v-if="errors" class="text-red-600 text-left ml-2">*This fill can't be blank!</p>
 				<input
+					class="input"
 					type="text"
 					id="enterSong"
 					placeholder="Enter your favourite song"
 					v-model="enterSong"
 				/>
 				<input
+					class="input"
 					type="text"
 					id="enterArtist"
 					placeholder="Enter artist's name"
@@ -20,8 +22,7 @@
 				type="submit"
 					class="h-8 w-24 justify-self-end bg-bluelogo text-white border-4 border-bluelogo hover:bg-classicblue hover:border-bluelogo"
 				>Submit</button>
-				<button
-				type="reset" @click="closeContent"
+				<button @click="closeContent" type="reset"
 					class="h-8 w-24 bg-classicblue text-white border-4 border-classicblue hover:bg-bluelogo hover:border hover:border-classicblue"
 				>Cancel</button>
 				
@@ -34,8 +35,6 @@
 </template>
 
 <script>
-	//	@click="closeContent"
-	//
 const constraints = {
 	enterSong: {
 		presence: true,
